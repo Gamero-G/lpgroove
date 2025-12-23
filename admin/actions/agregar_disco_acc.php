@@ -133,6 +133,9 @@ try {
     }
 
 } catch (Throwable $error) {
+    error_log("agregar_disco_acc.php ERROR: " . $error->getMessage());
+    error_log($error->getTraceAsString());
+
     $errors['general'] = 'No se pudo insertar el disco.';
     backWithErrors($errors, $old);
 }
