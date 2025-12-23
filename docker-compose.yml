@@ -1,7 +1,8 @@
 services:
   web:
+    image: ghcr.io/TU_USUARIO/TU_REPO:latest
     build: .
-    container_name: miapp-web
+    container_name: lpgroove-web
     depends_on:
       - db
     ports:
@@ -15,18 +16,18 @@ services:
 
   db:
     image: mariadb:11
-    container_name: miapp-db
+    container_name: lpgroove-db
     environment:
       MARIADB_DATABASE: lpg_08_26
       MARIADB_USER: miapp_user
       MARIADB_PASSWORD: miapp_pass
       MARIADB_ROOT_PASSWORD: root_pass_123
     volumes:
-      - /mnt/user/appdata/miapp/db:/var/lib/mysql
+      - /mnt/user/appdata/lpgroove/db:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: miapp-phpmyadmin
+    container_name: lpgroove-phpmyadmin
     depends_on:
       - db
     ports:
